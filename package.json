@@ -1,13 +1,14 @@
 {
-  "name": "slim-core",
+  "name": "slimproto-core",
   "version": "0.1.0",
-  "description": "Serverless identity management.",
+  "description": "Identity management protocol.",
   "main": "index.js",
+  "author": "K1GOL",
+  "license": "BSD-2-Clause",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "BSD-2-Clause",
   "dependencies": {
     "node-forge": "^1.3.1",
     "pbkdf2": "^3.1.2"

@@ -1,11 +1,10 @@
 import pkg from 'node-forge'
 import { pbkdf2Sync } from 'pbkdf2'
-import { createHash } from 'crypto'
 const { pki, md } = pkg
 
 export const createKeyPair = (name, pwd) => {
-  const nHash = Buffer.from(createHash('sha256').update(name).digest('hex')).toString('base64')
-  const pHash = Buffer.from(createHash('sha256').update(pwd).digest('hex')).toString('base64')
+  const nHash = md.sha256.create().update(name, 'utf8').digest().getBytes().toString('base64')
+  const pHash = md.sha256.create().update(pwd, 'utf8').digest().getBytes().toString('base64')
   const derivedKey = pbkdf2Sync(nHash + pHash, nHash, 4096, 32, 'sha512')
   const seed = derivedKey
   const { privateKey, publicKey } = pki.ed25519.generateKeyPair({ seed })
